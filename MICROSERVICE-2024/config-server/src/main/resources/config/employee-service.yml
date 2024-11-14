@@ -1,0 +1,12 @@
+#While Running Department Service it will get from  department Config from here:-
+#Department Service running port
+server :
+  port : 9002
+
+#Connecting Department Service to Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
