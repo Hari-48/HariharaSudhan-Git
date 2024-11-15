@@ -1,0 +1,30 @@
+// create a Query with DocID :-
+
+// POST : uam_chinesewall_template/_search?scroll=1m
+//STEP - 3
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-10-25"
+            }
+          }
+        },
+        {
+          "terms": {
+            "counterpartLabel.keyword": {
+              "index": "uam_chinesewall_template",
+              "id": "counterpartLabel",
+              "path": "term_list"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "size": 2000
+}
