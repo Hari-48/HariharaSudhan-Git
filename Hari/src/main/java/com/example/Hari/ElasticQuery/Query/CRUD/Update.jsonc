@@ -1,0 +1,14 @@
+{
+  "query": {
+    "ids": {
+      "values": [
+        "5JSxPpMBLmfKasMDZKwR"
+      ]
+    }
+  },
+  "script": {
+    "source": "ctx._source.departmentAmendRights = ['FO']",
+    "lang": "painless"
+  }
+}
+///uam_navigation_department/_update_by_query
