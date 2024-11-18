@@ -1,0 +1,11 @@
+{
+  "query": {
+    "ids": {
+      "values": [
+        "4JTnPZMBLmfKasMDVqzf"
+      ]
+    }
+  }
+}
+
+///uam_navigation_department/_delete_by_query
