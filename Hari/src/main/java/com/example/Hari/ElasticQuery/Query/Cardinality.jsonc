@@ -1,0 +1,69 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": "2024-08-23"
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "unique": {
+      "cardinality": {
+        "field": "dspLabel.keyword"
+      }
+    }
+  }
+}
+//
+//{
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-10-04"
+//            }
+//          }
+//        },
+//        {
+//          "range": {
+//            "creationDate.keyword": {
+//              "gte": "2023-12-11",
+//              "lte": "2023-12-18"
+//            }
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "aggregations": {
+//    "uniqueCount": {
+//      "cardinality": {
+//        "field": "creationDate.keyword"
+//      }
+//    }
+//  }
+//}
+
+
+
+//{
+//  "aggs": {
+//    "uniqueCount": {
+//      "cardinality": {
+//        "field": "reportDate"
+//      }
+//    },
+//    "uniqueReportDates": {
+//      "terms": {
+//        "field": "reportDate",
+//        "size": 10000
+//      }
+//    }
+//  }
+//}

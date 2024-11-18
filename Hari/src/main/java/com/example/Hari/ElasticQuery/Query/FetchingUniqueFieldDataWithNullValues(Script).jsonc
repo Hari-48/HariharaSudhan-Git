@@ -1,0 +1,23 @@
+{
+  "aggregations": {
+    "FilterColumn": {
+      "terms": {
+        "script": {
+          "source": "if (doc['department.displaycolumnval'].size() == 0) { return ''; } else { return doc['department.displaycolumnval'].value; }",
+          "lang": "painless"
+        },
+        "order": [
+          {
+            "_key": "asc"
+          }
+        ],
+        "size": 50
+      }
+    }
+  },
+  "query": {
+    "bool": {
+      "must": []
+    }
+  }
+}

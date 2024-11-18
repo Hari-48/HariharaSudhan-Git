@@ -1,0 +1,30 @@
+{
+  "aggregations": {
+    "weeklyReportDate": {
+      "aggregations": {
+        "uniqueCount": {
+          "cardinality": {
+            "script": {
+              "lang": "painless",
+              "source": "doc['mgrId.keyword'].value + '|' + doc['cpId'].value"
+            },
+            "precision_threshold": 10000
+          }
+        }
+      },
+      "date_histogram": {
+        "calendar_interval": "week",
+        "field": "creationDate",
+        "format": "yyyy-MM-dd",
+        "time_zone": "+00:00"
+      }
+    }
+  },
+  "query": {
+    "term": {
+      "reportDate": {
+        "value": "2024-09-13"
+      }
+    }
+  }
+}

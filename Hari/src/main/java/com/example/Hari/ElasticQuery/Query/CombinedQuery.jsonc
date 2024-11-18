@@ -1,0 +1,207 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-10-25"
+            }
+          }
+        },
+        {
+          "bool": {
+            "minimum_should_match": "1",
+            "should": [
+              {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "inActiveGroupLabel"
+                      }
+                    },
+                    {
+                      "exists": {
+                        "field": "activeGroupLabel"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must": [
+                          {
+                            "bool": {
+                              "must_not": [
+                                {
+                                  "term": {
+                                    "activeGroupLabel.keyword": {
+                                      "value": ""
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "must_not": [
+                          {
+                            "term": {
+                              "inActiveGroupLabel.keyword": {
+                                "value": ""
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "inActiveGroupLabel"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must_not": [
+                          {
+                            "term": {
+                              "inActiveGroupLabel.keyword": {
+                                "value": ""
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must_not": [
+                          {
+                            "exists": {
+                              "field": "activeGroupLabel"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "activeGroupLabel"
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must_not": [
+                          {
+                            "term": {
+                              "activeGroupLabel.keyword": {
+                                "value": ""
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must_not": [
+                          {
+                            "exists": {
+                              "field": "InActiveGroupLabel"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "bool": {
+                  "must": [
+                    {
+                      "exists": {
+                        "field": "activeGroupLabel"
+                      }
+                    },
+                    {
+                      "exists": {
+                        "field": "inActiveGroupLabel"
+                      }
+                    },
+                    {
+                      "term": {
+                        "activeGroupLabel.keyword": {
+                          "value": ""
+                        }
+                      }
+                    },
+                    {
+                      "bool": {
+                        "must_not": [
+                          {
+                            "term": {
+                              "inActiveGroupLabel.keyword": {
+                                "value": ""
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "terms": {
+            "counterpartLabel.keyword": {
+              "index": "uam_chinesewall_template",
+              "id": "counterpartLabel",
+              "path": "term_list"
+            }
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "terms": {
+                  "templateLabel.keyword": [
+                    "ALL"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "size": 50,
+  "sort": [
+    {
+      "templateLabel.keyword": {
+        "order": "asc"
+      }
+    },
+    {
+      "counterpartLabel.keyword": {
+        "order": "asc"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "script": {
+            "script": {
+              "source": "def alphaValue = doc['licenseCatCount.keyword'].size() > 0 ? doc['licenseCatCount.keyword'].value : null; return alphaValue != null && alphaValue =~ /[a-zA-Z]+/;"
+            }
+          }
+        }
+      ],
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-10-25"
+            }
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "terms": {
+                  "status.keyword": [
+                    "Active"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
