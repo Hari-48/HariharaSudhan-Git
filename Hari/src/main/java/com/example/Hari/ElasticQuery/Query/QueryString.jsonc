@@ -1,0 +1,74 @@
+{
+  "pit": {
+    "id": "q5ftAwEQdWFtX2NvdW50ZXJwYXJ0eRZlU0ZKaGdtNlN0MnNsLVVaTXZDeURRABZfLXViYlRDX1IyU1luaUoyT3NaSVRBAAAAAAAAVOagFm1fSWs4WjRrUThhOWNlei1IbTc2S3cAARZlU0ZKaGdtNlN0MnNsLVVaTXZDeURRAAA="
+  },
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-08-30"
+            }
+          }
+        },
+        {
+          "bool": {
+            "must_not": [
+              {
+                "term": {
+                  "counterpartStatus.keyword": {
+                    "value": "duplicate"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "query_string": {
+                  "fields": [
+                    "counterPartyName",
+                    "dspLabel",
+                    "fullName",
+                    "revision"
+                  ],
+                  "query": "91*"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "terms": {
+                  "status.keyword": [
+                    "LIVE"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "size": 50,
+  "sort": [
+    {
+      "counterPartyName.keyword": {
+        "order": "asc"
+      }
+    },
+    {
+      "dspLabel.keyword": {
+        "order": "asc"
+      }
+    }
+  ]
+}

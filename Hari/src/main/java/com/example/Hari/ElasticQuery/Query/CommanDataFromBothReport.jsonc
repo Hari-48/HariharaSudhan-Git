@@ -1,0 +1,203 @@
+{
+  "aggregations": {
+    "unique_apps": {
+      "composite": {
+        "size": 10000,
+        "sources": [
+          {
+            "Duplicated_dspLabel": {
+              "terms": {
+                "field": "dspLabel.keyword"
+              }
+            }
+          }
+        ]
+      },
+      // Get the common Label
+      "aggregations": {
+        "countOfDspLabel": {
+          "value_count": {
+            "field": "dspLabel.keyword"
+          }
+        },
+        "DSP": {
+          "bucket_selector": {
+            "buckets_path": {
+              "docCount": "countOfDspLabel"
+            },
+            "script": "params.docCount > 1"
+          }
+        }
+      }
+    },
+    // Get the total unique count :- Cardinality
+    "unique_counterparty_count": {
+      "cardinality": {
+        "field": "dspLabel.keyword"
+      }
+    }
+  },
+  "query": {
+    "term": {
+      "reportDate": {
+        "value": "2024-08-23"
+      }
+    }
+  },
+  "size": 1
+}
+//
+//
+//{
+//  "aggregations": {
+//    "counterpartLabel": {
+//      "aggregations": {
+//        "unique_template_Label": {
+//          "cardinality": {
+//            "field": "templateLabel.keyword"
+//          }
+//        },
+//        "common_Template": {
+//          "bucket_selector": {
+//            "buckets_path": {
+//              "count_of_counterpartLabel_Label": "unique_template_Label"
+//            },
+//            "script": {
+//              "params": {
+//                "targetCount": 2
+//              },
+//              "source": "params.count_of_counterpartLabel_Label == params.targetCount"
+//            }
+//          }
+//        }
+//      },
+//      "composite": {
+//        "size": 10000,
+//        "sources": [
+//          {
+//            "composite": {
+//              "terms": {
+//                "field": "counterpartLabel.keyword"
+//              }
+//            }
+//          }
+//        ]
+//      }
+//    }
+//  },
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-10-25"
+//            }
+//          }
+//        },
+//        {
+//          "terms": {
+//            "templateLabel.keyword": [
+//              "CBSHA-ALL",
+//              "CBVN-ALL"
+//            ]
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "size": 0
+//}
+
+//
+//{
+//  "aggregations": {
+//    "counterpartLabel": {
+//      "aggregations": {
+//        "unique_template_Label": {
+//          "cardinality": {
+//            "field": "templateLabel.keyword"
+//          }
+//        },
+//        "common_Template": {
+//          "bucket_selector": {
+//            "buckets_path": {
+//              "count_of_counterpartLabel_Label": "unique_template_Label"
+//            },
+//            "script": {
+//              "params": {
+//                "targetCount": 1
+//              },
+//              "source": "params.count_of_counterpartLabel_Label == params.targetCount"
+//            }
+//          }
+//        }
+//      },
+//      "composite": {
+//        "size": 10000,
+//        "sources": [
+//          {
+//            "composite": {
+//              "terms": {
+//                "field": "counterpartLabel.keyword"
+//              }
+//            }
+//          }
+//        ]
+//      }
+//    }
+//  },
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-10-25"
+//            }
+//          }
+//        },
+//        {
+//          "terms": {
+//            "templateLabel.keyword": [
+//              "ALL"
+//            ]
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "size": 0
+//}
+
+//{
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-07-15"
+//            }
+//          }
+//        },
+//        {
+//          "terms": {
+//            "templateLabel.keyword": [
+//              "BTHAI-ALL",
+//              "CMTT"
+//            ]
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "aggs": {
+//    "common_counterpartLabel": {
+//      "terms": {
+//        "field": "counterpartLabel.keyword",
+//        "min_doc_count": 2
+//      }
+//    }
+//  }
+//}

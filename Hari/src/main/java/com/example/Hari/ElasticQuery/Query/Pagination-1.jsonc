@@ -1,0 +1,62 @@
+{
+  "aggregations": {
+    "dormantCounterparty": {
+      "composite": {
+        "size": 39,
+        "sources": [
+          {
+            "entityLabel": {
+              "terms": {
+                "field": "entityLabel.keyword"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "query": {
+    "term": {
+      "reportDate": {
+        "value": "2024-07-07"
+      }
+    }
+  },
+  "size": 1
+}
+
+
+//
+//{
+//  "aggregations": {
+//    "pagination": {
+//      "composite": {
+//        "sources": [
+//          {
+//            "groupLabel": {
+//              "terms": {
+//                "field": "groupLabel.keyword"
+//              }
+//            }
+//          }
+//        ],
+//        "after": {
+//          "groupLabel": "bsm nidapr"
+//        }
+//      }
+//    }
+//  },
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-08-01"
+//            }
+//          }
+//        }
+//      ]
+//    }
+//  }
+//}

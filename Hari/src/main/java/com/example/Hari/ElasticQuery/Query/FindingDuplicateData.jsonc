@@ -1,0 +1,44 @@
+{
+  "aggregations": {
+    "unique_apps": {
+      "composite": {
+        "size": 10000,
+        "sources": [
+          {
+            "dspLabel": {
+              "terms": {
+                "field": "dspLabel.keyword"
+              }
+            }
+          }
+        ],
+        "after": {
+          "dspLabel": "asia talen pte"
+        }
+      },
+      "aggregations": {
+        "fetching_duplicate_dsplabel": {
+          "bucket_selector": {
+            "buckets_path": {
+              "duplicate_data_count": "_count"
+            },
+            "script": "params.duplicate_data_count > 1"
+          }
+        }
+      }
+    },
+    "unique_counterparty_count": {
+      "cardinality": {
+        "field": "dspLabel.keyword"
+      }
+    }
+  },
+  "query": {
+    "term": {
+      "reportDate": {
+        "value": "2024-08-23"
+      }
+    }
+  },
+  "size": 1
+}

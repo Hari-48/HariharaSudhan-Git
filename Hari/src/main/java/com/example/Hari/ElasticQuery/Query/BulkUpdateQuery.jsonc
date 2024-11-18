@@ -1,0 +1,19 @@
+[[
+  {
+    "index": {
+      "_index": "uam_navigation_department"
+    }
+  },
+  {
+    "path": "Accounting>Audit>Display entries to retry",
+    "pathLabel": "Accounting",
+    "pathRest": ">Audit>Display entries to retry",
+    "departmentAmendRights": "AB"
+  }
+],
+//POST - /uam_group_navigation_rights/_update/WgDcQJIBORpjM_hLRo7- ( index/_update/_update)
+{
+"doc": {
+"path": "Processing>Processing scripts>Processing scripts>SAT"
+}
+}]
