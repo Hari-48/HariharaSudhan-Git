@@ -169,3 +169,35 @@
 //  },
 //  "size": 0
 //}
+
+//{
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-07-15"
+//            }
+//          }
+//        },
+//        {
+//          "terms": {
+//            "templateLabel.keyword": [
+//              "BTHAI-ALL",
+//              "CMTT"
+//            ]
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "aggs": {
+//    "common_counterpartLabel": {
+//      "terms": {
+//        "field": "counterpartLabel.keyword",
+//        "min_doc_count": 2
+//      }
+//    }
+//  }
+//}
