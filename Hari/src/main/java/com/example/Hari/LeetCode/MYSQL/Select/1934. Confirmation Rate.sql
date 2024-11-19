@@ -36,11 +36,14 @@
 
 SELECT
     s.user_id,
-    -- SUM(CASE WHEN Action = 'confirmed' THEN 1 ELSE 0 END) AS confirmed_count,
-    -- COUNT(1) AS total_count,
-    SUM(CASE WHEN Action = 'confirmed' THEN 1 ELSE 0 END) / COUNT(1) ::NUMERIC(10,2) AS confirmed_ratio
+    -- COALESCE(SUM(CASE WHEN c.Action = 'confirmed' THEN 1 ELSE 0 END), 0) AS confirmed_count,
+    -- COUNT(c.user_id) AS total_count,
+    COALESCE(
+        SUM(CASE WHEN c.Action = 'confirmed' THEN 1 ELSE 0 END) / NULLIF(COUNT(c.user_id), 0),
+        0
+    ) AS confirmation_rate
 FROM
     Signups s
-    LEFT JOIN Confirmations c on c.user_id = s.user_id
+    LEFT JOIN Confirmations c ON c.user_id = s.user_id
 GROUP BY
-    c.user_id;
+    s.user_id;
