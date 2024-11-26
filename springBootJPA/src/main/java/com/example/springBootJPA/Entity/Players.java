@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.Set;
 
-@Entity
+
 @Table(name = "CRICK_PLAYER")
 @Getter
 @Setter

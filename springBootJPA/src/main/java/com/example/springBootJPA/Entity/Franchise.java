@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.util.Set;
 
-@Entity
+
 @Table(name = "FRANCHISE")
 @Data
 
