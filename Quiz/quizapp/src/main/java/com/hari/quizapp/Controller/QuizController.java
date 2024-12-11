@@ -27,11 +27,10 @@ public class QuizController {
         return questionService.getQuestionByCategory(category);
     }
 
-
+    //save All Question
     @PostMapping("/save")
     public ResponseEntity<?> saveQuestions(@RequestBody List<Question> questions){
         return questionService.saveQuestions(questions);
-
     }
 
 
