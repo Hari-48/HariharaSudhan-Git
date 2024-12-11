@@ -18,12 +18,12 @@ public class QuizController {
     @Autowired
     QuestionService questionService;
     @GetMapping("/allQuestion")
-    public List<Question> getAllQuestion() {
+    public ResponseEntity<List<Question>> getAllQuestion() {
         return questionService.getAllQuestion();
     }
 
     @GetMapping("/category/{category}")
-    public List<Question> getQuestionByCategory(@PathVariable String category){
+    public ResponseEntity<List<Question>> getQuestionByCategory(@PathVariable String category){
         return questionService.getQuestionByCategory(category);
     }
 

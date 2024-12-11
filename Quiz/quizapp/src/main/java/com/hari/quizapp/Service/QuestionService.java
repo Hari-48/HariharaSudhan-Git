@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,16 +18,36 @@ public class QuestionService {
 
     @Autowired
     QuestionRepo questionRepo;
-    public List<Question> getAllQuestion() {
-        return questionRepo.findAll();
+    public ResponseEntity<List<Question>> getAllQuestion() {
+        try {
+            return new ResponseEntity<>(questionRepo.findAll(), HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
 
-    public List<Question> getQuestionByCategory(String category) {
-        return questionRepo.findByCategory(category);
+    public  ResponseEntity<List<Question>> getQuestionByCategory(String category) {
+        try {
+            return new ResponseEntity<>(questionRepo.findByCategory(category),HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(new ArrayList<>(),HttpStatus.BAD_REQUEST);
     }
+
+
 
     public ResponseEntity<?> saveQuestions(List<Question> questions) {
-        questionRepo.saveAll(questions);
-        return new ResponseEntity<>("Success",HttpStatus.OK);
+        try {
+            questionRepo.saveAll(questions);
+            return new ResponseEntity<>("Success", HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("failed",HttpStatus.BAD_REQUEST);
     }
 }
