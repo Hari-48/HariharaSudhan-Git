@@ -8,8 +8,6 @@ import lombok.Data;
 @Table(name = "Questions")
 
 public class Question {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -29,7 +27,6 @@ public class Question {
     private String rightAnswer;
     @Column(name = "DIFFICULTY_LEVEL")
     private String difficultyLevel;
-
     @Column(name = "CATEGORY")
     private String category;
 

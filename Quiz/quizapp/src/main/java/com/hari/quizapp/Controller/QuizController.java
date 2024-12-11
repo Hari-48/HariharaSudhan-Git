@@ -4,9 +4,8 @@ import com.hari.quizapp.Entity.Question;
 import com.hari.quizapp.Service.QuestionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -20,11 +19,20 @@ public class QuizController {
     QuestionService questionService;
     @GetMapping("/allQuestion")
     public List<Question> getAllQuestion() {
-//        List<Question> questions = questionService.getAllQuestion();
-//        log.info("Questions Response: {}", "questions");
-//        questions.forEach(question -> log.info("Question Title: {}", question.getQuestionTitle()));
         return questionService.getAllQuestion();
+    }
+
+    @GetMapping("/category/{category}")
+    public List<Question> getQuestionByCategory(@PathVariable String category){
+        return questionService.getQuestionByCategory(category);
+    }
+
+
+    @PostMapping("/save")
+    public ResponseEntity<?> saveQuestions(@RequestBody List<Question> questions){
+        return questionService.saveQuestions(questions);
 
     }
+
 
 }
