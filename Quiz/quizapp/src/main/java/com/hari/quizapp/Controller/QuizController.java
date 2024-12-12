@@ -1,6 +1,7 @@
 package com.hari.quizapp.Controller;
 
 import com.hari.quizapp.Model.QuestionWrapper;
+import com.hari.quizapp.Model.Response;
 import com.hari.quizapp.Service.QuizService;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.ManyToMany;
@@ -28,6 +29,11 @@ public class QuizController {
     @GetMapping("/getQues/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQuiz(@PathVariable Long id){
         return quizService.getQuizQuestions(id);
+    }
 
+
+    @PostMapping("/submit/{id}")
+    public ResponseEntity<Integer> submitQuiz(@PathVariable Long id , @RequestBody List<Response> responses){
+        return quizService.calculateResult(id,responses);
     }
 }
