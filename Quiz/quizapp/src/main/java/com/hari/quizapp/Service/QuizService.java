@@ -12,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,19 +60,21 @@ public class QuizService {
     }
 
     public ResponseEntity<Integer> calculateResult(Long id, List<Response> responses) {
-        Quiz quiz = quizRepo.findById(id).get();
-        List<Question> questions = quiz.getQuestions();
-        log.info(questions.toString());
-        int score = 0;
-        int i = 0;
-        for (Response response : responses) {
-            log.info("________:{}",i);
-            log.info(String.valueOf(questions.get(i)));
-            if (response.getResponse().equals(questions.get(i).getRightAnswer()))
-                score++;
-
-            i++;
+        try {
+            Quiz quiz = quizRepo.findById(id).get();
+            List<Question> questions = quiz.getQuestions();
+            int score = 0;
+            for (Response response : responses) {
+                for (Question question : questions) {
+                    if (question.getRightAnswer().equals(response.getResponse())) {
+                        score++;
+                    }
+                }
+            }
+            return new ResponseEntity<Integer>(score, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return new ResponseEntity<Integer>(score, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
