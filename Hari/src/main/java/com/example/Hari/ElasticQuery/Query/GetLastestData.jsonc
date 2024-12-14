@@ -1,0 +1,43 @@
+{
+  "query": {
+    "range": {
+      "reportDate": {
+        "lte": "2024-08-24"
+      }
+    }
+  },
+  "size": 1,
+  "sort": [
+    {
+      "reportDate": {
+        "order": "desc"
+      }
+    }
+  ],
+  "_source": [
+    "reportDate"
+  ]
+}
+
+//{
+//  "_source": {
+//    "includes": [
+//      "reportDate"
+//    ]
+//  },
+//  "query": {
+//    "range": {
+//      "reportDate": {
+//        "lte": "2024-08-26"
+//      }
+//    }
+//  },
+//  "size": 1,
+//  "sort": [
+//    {
+//      "reportDate": {
+//        "order": "desc"
+//      }
+//    }
+//  ]
+//}

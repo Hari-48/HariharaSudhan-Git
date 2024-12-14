@@ -1,0 +1,92 @@
+{
+  "_source": [
+    "creationDate"
+  ],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-08-30"
+            }
+          }
+        }
+      ],
+      "should": [
+        {
+          "range": {
+            "creationDate.keyword": {
+              "gte": "2023-07-31",
+              "lt": "2023-08-07"
+            }
+          }
+        },
+        {
+          "range": {
+            "creationDate.keyword": {
+              "gte": "2023-09-18",
+              "lt": "2023-09-25"
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1,
+      "must_not": [
+        {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "creationDate.keyword": {
+                    "value": ""
+                  }
+                }
+              },
+              {
+                "bool": {
+                  "must_not": {
+                    "exists": {
+                      "field": "creationDate.keyword"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "size": 10000
+}
+
+//{
+//  "_source": [
+//    "creationDate"
+//  ],
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-10-04"
+//            }
+//          }
+//        }
+//      ],
+//      "should": [
+//        {
+//          "range": {
+//            "creationDate.keyword": {
+//              "gte": "2023-01-02",
+//              "lt": "2023-01-09"
+//            }
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "size": 10000
+//}

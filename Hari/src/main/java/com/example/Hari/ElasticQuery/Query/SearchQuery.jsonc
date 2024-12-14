@@ -1,0 +1,16 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "groupLabel.keyword": {
+              "value": "AUDIT-RPT"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "size": 2000
+}

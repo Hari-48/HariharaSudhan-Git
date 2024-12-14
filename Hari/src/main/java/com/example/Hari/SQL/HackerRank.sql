@@ -91,6 +91,38 @@ LEFT JOIN
 WHERE professor_names.row_num > (SELECT COUNT(*) FROM OCCUPATIONS WHERE OCCUPATION = 'DOCTOR');
 
 
+-- ************AGGREGATE FUNCTIONS **************
+-- Query a count of the number of cities in CITY having a Population larger than 100000.
+select count(*) from city where population > 100000;
+
+-- Query the total population of all cities in CITY where District is California.
+SELECT SUM(population)
+FROM CITY
+WHERE DISTRICT = 'California';
+
+
+--Query the average population of all cities in CITY where District is California.
+SELECT AVG(population) FROM CITY WHERE DISTRICT = 'California'
+
+
+---Query the average population for all cities in CITY, rounded down to the nearest integer.
+SELECT ROUND(AVG(population))
+FROM CITY;
+
+
+--Query the sum of the populations for all Japanese cities in CITY. The COUNTRYCODE for Japan is JPN.
+SELECT SUM(POPULATION) FROM CITY WHERE COUNTRYCODE = 'JPN'
+
+
+--Query the difference between the maximum and minimum populations in CITY.
+SELECT MAX(POPULATION)- MIN(POPULATION) FROM CITY
+
+
+--Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, but did not realize her keyboard's  key was broken until after completing the calculation. She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary.
+--Write a query calculating the amount of error (i.e.:  average monthly salaries), and round it up to the next integer.
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(Salary,'0',''))) FROM EMPLOYEES
+
+
 
 
 

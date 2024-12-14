@@ -1,0 +1,62 @@
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "terms": {
+            "dspLabel.keyword": [
+              "02SENSORNEW-I",
+              "100HEARTS-I",
+              "101TOYS460",
+              "1024PL",
+              "103ECAPITAL",
+              "10INFINITY",
+              "10MUSANGHILL496",
+              "11DIAMONDCAP",
+              "1221PLANRESOURC",
+              "123COM4LIMITED"
+            ]
+          }
+        },
+        {
+          "terms": {
+            "dspLabel.keyword": [
+              "123DUTYFREEPL-I"
+            ]
+          }
+        }
+      ],
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-08-30"
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "term": {
+            "counterpartStatus.keyword": {
+              "value": "duplicate"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "size": 10,
+  "sort": [
+    {
+      "dspLabel.keyword": {
+        "order": "desc"
+      }
+    },
+    {
+      "counterPartyName.keyword": {
+        "order": "desc"
+      }
+    }
+  ]
+}

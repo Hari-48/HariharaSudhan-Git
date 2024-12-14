@@ -1,0 +1,214 @@
+{
+  "aggregations": {
+    "filtered_labels": {
+      "composite": {
+        "size": 10000,
+        "sources": [
+          {
+            "composite": {
+              "terms": {
+                "field": "counterpartLabel.keyword"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "templateLabel.keyword": {
+              "value": "CBHK-ALL"
+            }
+          }
+        },
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-08-30"
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "terms": {
+            "counterpartLabel.keyword": [
+              "abaa cam",
+              "aclb cam",
+              "agriculturalkh",
+              "amkmicroins",
+              "c-maot-s-ulsm",
+              "cadi cam"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+
+//{
+//  "query": {
+//    "bool": {
+//      "must": [
+//        {
+//          "terms": {
+//            "dspLabel.keyword": [
+//              "CTP12295",
+//              "CTP130",
+//              "CTP13163",
+//              "CTP13165",
+//              "CTP133",
+//              "CTP14144",
+//              "CTP178",
+//              "CTP18799",
+//              "CTP20623",
+//              "CTP21095",
+//              "CTP2366",
+//              "CTP2457",
+//              "CTP2473",
+//              "CTP2743",
+//              "CTP2809",
+//              "CTP2820",
+//              "CTP2836",
+//              "CTP2838",
+//              "CTP28665",
+//              "CTP2956",
+//              "CTP30764",
+//              "CTP3183",
+//              "CTP3344",
+//              "CTP3832",
+//              "CTP3833",
+//              "CTP39247",
+//              "CTP4294",
+//              "CTP44067",
+//              "CTP4408",
+//              "CTP4504",
+//              "CTP4505",
+//              "CTP4506",
+//              "CTP45140",
+//              "CTP45207",
+//              "CTP45208",
+//              "CTP45209",
+//              "CTP45210",
+//              "CTP45211",
+//              "CTP45212",
+//              "CTP45213",
+//              "CTP45214",
+//              "CTP45215",
+//              "CTP45216",
+//              "CTP45217",
+//              "CTP45218",
+//              "CTP45219",
+//              "CTP45220",
+//              "CTP45221",
+//              "CTP45222",
+//              "CTP45223",
+//              "CTP45224",
+//              "CTP45225",
+//              "CTP45226",
+//              "CTP45227",
+//              "CTP45262",
+//              "CTP45378",
+//              "CTP4577",
+//              "CTP4578",
+//              "CTP46571",
+//              "CTP46753",
+//              "CTP46881",
+//              "CTP4753",
+//              "CTP48460",
+//              "CTP4866",
+//              "CTP4867",
+//              "CTP48721",
+//              "CTP49654",
+//              "CTP4968",
+//              "CTP5024",
+//              "CTP50321",
+//              "CTP5251",
+//              "CTP52693",
+//              "CTP52696",
+//              "CTP53797",
+//              "CTP54482",
+//              "CTP54487",
+//              "CTP54614",
+//              "CTP5464",
+//              "CTP5548",
+//              "CTP55481",
+//              "CTP5551",
+//              "CTP57053",
+//              "CTP57247",
+//              "CTP58559",
+//              "CTP59267",
+//              "CTP5958",
+//              "CTP5960",
+//              "CTP60144",
+//              "CTP6231",
+//              "CTP6233",
+//              "CTP6234",
+//              "CTP6249",
+//              "CTP6263",
+//              "CTP6282",
+//              "CTP6296",
+//              "CTP64460",
+//              "CTP64461",
+//              "CTP64689",
+//              "CTP64832",
+//              "CTP6637",
+//              "CTP68123",
+//              "CTP68556",
+//              "CTP68639",
+//              "CTP69052",
+//              "CTP70753",
+//              "CTP7255",
+//              "CTP7340",
+//              "CTP7361",
+//              "CTP78257",
+//              "CTP78258"
+//            ]
+//          }
+//        },
+//        {
+//          "term": {
+//            "reportDate": {
+//              "value": "2024-08-30"
+//            }
+//          }
+//        }
+//      ]
+//    }
+//  },
+//  "size": 10000
+//}
+
+
+//{
+//  "query": {
+//    "bool": {
+//      "should": [
+//        {
+//          "terms": {
+//            "department.keyword": [
+//              ""
+//            ]
+//          }
+//        },
+//        {
+//          "bool": {
+//            "must_not": {
+//              "exists": {
+//                "field": "department.keyword"
+//              }
+//            }
+//          }
+//        }
+//      ],
+//      "minimum_should_match": 1
+//    }
+//  }
+//}

@@ -1,0 +1,52 @@
+{
+  "aggregations": {
+    "Aggregations": {
+      "composite": {
+        "size": 10000,
+        "sources": [
+          {
+            "map2": {
+              "terms": {
+                "field": "groupLabel.keyword"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-08-23"
+            }
+          }
+        },
+        {
+          "term": {
+            "status": {
+              "value": "active"
+            }
+          }
+        },
+        {
+          "exists": {
+            "field": "userGroupDepartment.keyword"
+          }
+        },
+        {
+          "script": {
+            "script": {
+              "lang": "painless",
+              "source": "doc['userGroupDepartment.keyword'].value != ''"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "size": 10
+}
