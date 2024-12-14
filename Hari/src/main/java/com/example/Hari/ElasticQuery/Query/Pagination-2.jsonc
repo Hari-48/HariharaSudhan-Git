@@ -1,0 +1,28 @@
+{
+  "query": {
+    "term": {
+      "reportDate": {
+        "value": "2024-07-07"
+      }
+    }
+  },
+  "aggregations": {
+    "dormantCounterparty": {
+      "composite": {
+        "size": 10000,
+        "sources": [
+          {
+            "entityLabel.keyword": {
+              "terms": {
+                "field": "entityLabel.keyword"
+              }
+            }
+          }
+        ],
+        "after": {
+          "entityLabel.keyword": "cisl_ria"
+        }
+      }
+    }
+  }
+}

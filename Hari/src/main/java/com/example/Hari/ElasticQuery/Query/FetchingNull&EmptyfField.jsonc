@@ -1,0 +1,23 @@
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "term": {
+            "department.keyword": ""
+          }
+        },
+        {
+          "bool": {
+            "must_not": {
+              "exists": {
+                "field": "department"
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}

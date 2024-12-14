@@ -1,0 +1,28 @@
+{
+  "aggregations": {
+    "FilterColumn": {
+      "terms": {
+        "field": "department.displaycolumnval",
+        "order": [
+          {
+            "_key": "asc"
+          }
+        ],
+        "size": 50
+      }
+    }
+  },
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "reportDate": {
+              "value": "2024-01-01"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
