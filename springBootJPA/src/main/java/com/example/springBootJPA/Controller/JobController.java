@@ -99,3 +99,20 @@ public class JobController {
 
 
 
+    // @PostMapping("/importJobs")
+    // private String jobLauncher() {
+    //     JobParameters jobParameters = new JobParametersBuilder().
+    //             addLong("StartAt", System.currentTimeMillis())
+    //              .toJobParameters();
+    //     try {
+    //         // Launch the job
+    //         JobExecution jobExecution = jobLauncher.run(job, jobParameters);
+    //         // return the job Status
+    //         return jobExecution.getStatus().toString();
+    //     } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException |
+    //              JobParametersInvalidException e) {
+    //         return "Job failed with exceptions" + e.getMessage();
+    //     }
+    // }
+
+}
