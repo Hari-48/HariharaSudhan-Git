@@ -3,11 +3,8 @@ package com.example.springBootJPA.config;
 
 import com.example.springBootJPA.Entity.Person;
 import com.example.springBootJPA.Model.BatchUpload;
-import com.example.springBootJPA.repository.PersonRepository;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.springBootJPA.Repository.PersonRepository;
 
-import org.json.simple.parser.ParseException;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -22,15 +19,10 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 @Configuration
 public class SpringBatchConfig {

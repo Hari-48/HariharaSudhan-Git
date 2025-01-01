@@ -1,4 +1,4 @@
-package com.example.springBootJPA.repository;
+package com.example.springBootJPA.Repository;
 
 
 import com.example.springBootJPA.Entity.Person;
