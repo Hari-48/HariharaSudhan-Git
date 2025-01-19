@@ -1,0 +1,15 @@
+{
+  "table": "PERSON",
+  "fields": [
+  "id",
+    "userId",
+    "firstName",
+    "lastName",
+    "gender",
+    "email",
+    "phone",
+    "dateOfBirth",
+    "jobTitle"
+  ]
+}
+
