@@ -69,43 +69,24 @@ public class JobController {
 
     @PostMapping("/custom/files")
     private String jobLaunchers(
+            @RequestParam("csvFile") MultipartFile csvFile,
+            @RequestParam("jsonFile") MultipartFile jsonFile) throws IOException {
 
-            @RequestParam("filePath") MultipartFile filePath,
-            @RequestParam("jsonPath") MultipartFile jsonPath) throws IOException {
-//
 //        String filePath = "/home/hariharasudhan/Documents/SpringBatch/people-1000.csv";
 //        String jsonPath = "/home/hariharasudhan/Documents/SpringBatch/people-1000.json";
-
-
-        log.info(String.valueOf(filePath));
-        log.info(String.valueOf(jsonPath));
-
-
-
-        File tempFile = saveMultipartFile(filePath);
-        File tempJsonFile = saveMultipartFile(jsonPath);
-
-        String tempFilePath = tempFile.getAbsolutePath();
-        String tempJsonPath = tempJsonFile.getAbsolutePath();
-
-
-
-
-
-
 
 //        String filePath = new ClassPathResource("people-1000.csv").getPath();
 //        String jsonPath = new ClassPathResource("people-1000.json").getPath();
 
+        File tempFile = saveMultipartFile(csvFile);
+        File tempJsonFile = saveMultipartFile(jsonFile);
 
-
-
+        String tempFilePath = tempFile.getAbsolutePath();
+        String tempJsonPath = tempJsonFile.getAbsolutePath();
 
         String fileName = getFileNameFromFilePath(tempFilePath);
 
-
         Job newJob = springBatchConfig.createJob(jobRepository, steps);
-
 
         JobParameters jobParam = new JobParametersBuilder()
                 .addString("name", "hari")
