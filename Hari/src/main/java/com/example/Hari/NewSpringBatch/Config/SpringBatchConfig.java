@@ -38,6 +38,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +51,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -241,6 +244,68 @@ public class SpringBatchConfig {
         JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
         return (String) jsonObject.get("table");
     }
+
+    @Autowired
+    JdbcTemplate jdbcTemplate ;
+
+
+
+    public ResponseEntity<?> createTable(String columnName , String tableName){
+
+
+
+//        List<String> tableFields = List.of("id INT PRIMARY KEY", "name VARCHAR(255)", "created_at TIMESTAMP");
+//
+//        String tableName = "my_table";
+
+       // String fields = String.join(", ", tableFields);
+
+
+        String sql = String.format("CREATE TABLE IF NOT EXISTS %s (%s)",tableName,columnName);
+
+        try {
+            // Execute the SQL query
+            jdbcTemplate.execute(sql);
+
+            // Log the SQL for debugging purposes
+            System.out.println("Generated SQL: " + sql);
+
+            // Return a success response
+            return ResponseEntity.ok("Table created successfully or already exists");
+        } catch (Exception e) {
+            // Handle any exceptions and return an error response
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Error creating table: " + e.getMessage());
+        }
+    }
+
+
+       // jdbcTemplate.execute(sql);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
