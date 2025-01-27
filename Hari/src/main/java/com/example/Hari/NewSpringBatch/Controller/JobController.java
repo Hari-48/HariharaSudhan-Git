@@ -124,28 +124,14 @@ public class JobController {
 
 
     @GetMapping("/table")
-
     public ResponseEntity<?> createTable(MultipartFile file) throws IOException {
-
-
         File tempFile = saveMultipartFile(file);
-
         String tempFilePath = tempFile.getAbsolutePath();
-
         String fileName = getFileNameFromFilePath(tempFilePath);
-
-
         String tableName = getTableName(fileName);
-
         String columnName = getFields(tempFilePath);
-
-
-
         return springBatchConfig.createTable(columnName,tableName);
     }
-
-
-
 
 
     public String getTableName(String fileName){
@@ -167,15 +153,12 @@ public class JobController {
             if (firstLine != null) {
                 // Split the line by commas to get individual fields
                 String[] columns = firstLine.split(",");
-
                 // Add fields to the list
                 for (String column : columns) {
                     fields.add(column.trim());
 
                 }
             }
-
-
              columnDefinitions = fields.stream()
                     .map(column -> {
                         if (fields.indexOf(column) == 0) {
@@ -188,7 +171,6 @@ public class JobController {
 
             log.info(columnDefinitions);
         }
-
         // Log the extracted columns
         log.info("Columns extracted: {}", fields);
         return columnDefinitions ;

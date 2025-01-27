@@ -193,13 +193,15 @@ public class SpringBatchConfig {
         ArrayList<String> fields = new ArrayList<>(jsonColumnNames(jsonPath));
         String table = getTable(jsonPath);
 
-        log.info("Table Name > :{}", table);
 
+
+// Wants to check whether the table is present or not !!!!!!!!!
 
         String queryColumns = String.join(", ", fields);
         log.info("QueryColumn:{}",queryColumns);
         String valueColumns = fields.stream().map(field -> ":" + field).collect(Collectors.joining(", "));
         log.info("valueColumns:{}",valueColumns);
+
 
         // Construct SQL without ON DUPLICATE KEY UPDATE
         String sql = String.format(
