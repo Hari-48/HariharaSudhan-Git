@@ -6,11 +6,12 @@ public class Node {
     Node next;
 
     Node random;
+    Node left, right;
 
     Node(int data) {
         this.data = data;
         this.next = null;
-
+       this.left = right = null;
         this.random=null;
     }
 
