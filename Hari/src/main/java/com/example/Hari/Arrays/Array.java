@@ -24,15 +24,27 @@ public class Array {
         System.out.println(getAnswer(questionNumber));
     }
 
+
+
+
+
     public static Object getAnswer(int questionNumber) {
         switch (questionNumber) {
             case 1:
                 return IndexOfSubArraySum.getIndexOfSubArraySum();
-
             case 2:
                 return MissingElements.missingNumber();
             default:
                 return new ResponseEntity<>("NOT FOUND ", HttpStatus.NOT_FOUND);
         }
+
+
+//        return switch (questionNumber) {
+//            case 1 -> IndexOfSubArraySum.getIndexOfSubArraySum();
+//            case 2 -> MissingElements.missingNumber();
+//            default -> new ResponseEntity<>("NOT FOUND ", HttpStatus.NOT_FOUND);
+//        };
     }
+
+
 }
