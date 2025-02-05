@@ -5,14 +5,17 @@ public class Node {
     int data;
     Node next;
 
-   Node left ;
-   Node right;
+
+    Node random;
+    Node left, right;
+
 
     Node(int data) {
         this.data = data;
         this.next = null;
-        this.right=null;
-        this.left=null;
+       this.left = right = null;
+        this.random=null;
+
     }
 
 }
