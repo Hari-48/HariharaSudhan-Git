@@ -14,6 +14,9 @@ public class Array {
         HashMap<Integer,String> questionMap = new HashMap<Integer,String>();
         questionMap.put(1,"Find Indexes of Sub array Sum ");
         questionMap.put(2,"Missing Elements in Array ");
+        questionMap.put(3,"MaximumSubArray - Kadane's Algorithm");
+        questionMap.put(4,"Second Largest Number");
+
 
         System.out.println(questionMap);
 
@@ -34,7 +37,11 @@ public class Array {
                 return IndexOfSubArraySum.getIndexOfSubArraySum();
             case 2:
                 return MissingElements.missingNumber();
-            default:
+            case 3:
+                return KadanesAlgorithm.maxSumOfArray();
+            case 4 :
+                return SecondLargestNumber.secondLargestNumber();
+                default:
                 return new ResponseEntity<>("NOT FOUND ", HttpStatus.NOT_FOUND);
         }
 
