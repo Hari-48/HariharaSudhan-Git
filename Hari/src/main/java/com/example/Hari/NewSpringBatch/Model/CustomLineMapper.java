@@ -42,8 +42,14 @@ public class CustomLineMapper extends DefaultLineMapper<DataRecord> {
     public static HashMap<String, String> lineToMap(ArrayList<String> fields, String line, String delimiter) {
         HashMap<String, String> dataMap = new HashMap<>();
         String[] lineArr = line.split(Pattern.quote(delimiter) + "(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+        log.info("LINE ARR :{}",lineArr.length);
+        log.info("LINE ARR :{}",lineArr);
+
         for (int i = 0; i < fields.size(); i++) {
             String field = fields.get(i);
+            log.info("field :{}",field);
+
             if (i < lineArr.length) {
                 if (lineArr[i].isEmpty() || lineArr[i] == null)
                     dataMap.put(field, null);
