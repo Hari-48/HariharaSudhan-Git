@@ -40,7 +40,7 @@ public class MaxSumPathTree {
             root.right.right.left = new Node(3);
             root.right.right.right = new Node(4);
 
-//            ClosestPoint solution = new ClosestPoint();
+//            Solution solution = new Solution();
             System.out.println("Maximum Path Sum: " + findMaxSum(root));
         }
     }

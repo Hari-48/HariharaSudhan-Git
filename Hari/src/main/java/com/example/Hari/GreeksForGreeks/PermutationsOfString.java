@@ -45,7 +45,7 @@ public class PermutationsOfString {
 
 
 
-//class ClosestPoint {
+//class Solution {
 //
 //    public ArrayList<String> findPermutation(String s) {
 //        // Code here
@@ -92,7 +92,7 @@ public class PermutationsOfString {
 //import java.util.ArrayList;
 //import java.util.List;
 //
-//class ClosestPoint {
+//class Solution {
 //    public ArrayList<String> findPermutation(String s) {
 //        // Call the static method getAns and return the result
 //        return getAns(s);
