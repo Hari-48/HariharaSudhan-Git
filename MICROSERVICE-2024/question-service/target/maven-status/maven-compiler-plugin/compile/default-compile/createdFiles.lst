@@ -1,7 +1,0 @@
-com/hari/question_service/Model/Response.class
-com/hari/question_service/Entity/Question.class
-com/hari/question_service/Repository/QuestionRepo.class
-com/hari/question_service/Model/QuestionWrapper.class
-com/hari/question_service/QuestionServiceApplication.class
-com/hari/question_service/Service/QuestionService.class
-com/hari/question_service/Controller/QuestionController.class
