@@ -12,8 +12,14 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+
+
+   // public record Products(int id, String name , String prize){}
+
     @RequestMapping ("/get")
     public List<Product> getProducts(){
         return productService.getProducts();
     }
+
+
 }
