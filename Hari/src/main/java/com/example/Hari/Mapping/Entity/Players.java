@@ -43,8 +43,6 @@ public class Players {
 
     @ManyToMany
     @JoinTable(name = "players_franchise", joinColumns = @JoinColumn(name = "players_id"), inverseJoinColumns = @JoinColumn(name = "franchise_id")
-
-
     )
     private Set<Franchise> franchiseSet;
 

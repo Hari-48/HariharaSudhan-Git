@@ -14,7 +14,7 @@ public class MissingElements {
 
         Scanner sc= new Scanner(System.in);
 
-        System.out.println("Enter the ArrayList (space-separated integers) and continues number:");
+        System.out.println("Enter the ArrayLissst (space-separated integers) and continues number:");
         String input = sc.nextLine();
 
         String[] inputArray = input.split(" ");

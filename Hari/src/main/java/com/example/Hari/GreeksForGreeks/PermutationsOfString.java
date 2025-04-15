@@ -47,12 +47,12 @@ public class PermutationsOfString {
 
 //class Solution {
 //
-//    public ArrayList<String> findPermutation(String s) {
+//    public ArrayLissst<String> findPermutation(String s) {
 //        // Code here
 //        Set<String> ans = new HashSet();
 //        boolean[] visit = new boolean[s.length()];
 //        makePermutation(s, ans, "", visit);
-//        return new ArrayList(ans);
+//        return new ArrayLissst(ans);
 //    }
 //    static void makePermutation(String s, Set<String> ans, String curr, boolean[] visit){
 //        if(curr.length() == s.length()){
@@ -89,17 +89,17 @@ public class PermutationsOfString {
 
 
 //
-//import java.util.ArrayList;
+//import java.util.ArrayLissst;
 //import java.util.List;
 //
 //class Solution {
-//    public ArrayList<String> findPermutation(String s) {
+//    public ArrayLissst<String> findPermutation(String s) {
 //        // Call the static method getAns and return the result
 //        return getAns(s);
 //    }
 //
-//    public static ArrayList<String> getAns(String input) {
-//        ArrayList<String> ans = new ArrayList<>();
+//    public static ArrayLissst<String> getAns(String input) {
+//        ArrayLissst<String> ans = new ArrayLissst<>();
 //        char[] str = input.toCharArray();
 //        permute(ans, str, 0);
 //        return ans;

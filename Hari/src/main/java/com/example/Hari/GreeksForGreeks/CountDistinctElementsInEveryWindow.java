@@ -45,10 +45,10 @@ public class CountDistinctElementsInEveryWindow {
     }
 
 
-//    private static ArrayList<Integer> getDistinctCount(int[] array, int k) {
-//        ArrayList<Integer> results = new ArrayList<>();
+//    private static ArrayLissst<Integer> getDistinctCount(int[] array, int k) {
+//        ArrayLissst<Integer> results = new ArrayLissst<>();
 //        for (int i = 0; i < k; i++) {
-//            ArrayList<Integer> sublist = new ArrayList<>();
+//            ArrayLissst<Integer> sublist = new ArrayLissst<>();
 //            // Add `k` elements to the sublist starting from index `i`
 //            for (int j = i; j < i + k; j++) {
 //                sublist.add(array[j]);

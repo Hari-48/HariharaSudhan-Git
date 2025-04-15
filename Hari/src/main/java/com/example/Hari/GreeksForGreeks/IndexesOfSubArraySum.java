@@ -21,11 +21,11 @@ public class IndexesOfSubArraySum {
     }
 
 
-//    public static ArrayList<Integer> getResult(int[] array, int target) {
+//    public static ArrayLissst<Integer> getResult(int[] array, int target) {
 //
 //
-//        ArrayList<Integer> newArray = new ArrayList((int) Arrays.stream(array).count());
-//        ArrayList<Integer> results = new ArrayList<>();
+//        ArrayLissst<Integer> newArray = new ArrayLissst((int) Arrays.stream(array).count());
+//        ArrayLissst<Integer> results = new ArrayLissst<>();
 //        for (int i = 0; i < array.length; i++) {
 //            newArray.add(array[i]);
 //            for (int j = i + 1; j < array.length; j++) {

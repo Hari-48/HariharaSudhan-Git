@@ -47,7 +47,7 @@ public class ConvertToStream {
         // Print elements of the set
         set.forEach(System.out::println);
 
-        // Create a HashMap of String keys and Object values
+        // Create a HashMaps of String keys and Object values
         Map<String, Object> map = new HashMap<>();
         // Add elements to the map
         map.put("First Key", "First Element");

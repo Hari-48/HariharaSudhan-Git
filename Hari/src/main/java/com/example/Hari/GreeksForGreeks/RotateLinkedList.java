@@ -61,7 +61,7 @@ public class RotateLinkedList {
             return head; // No need to rotate an empty list or zero rotations
         }
 
-        // Convert linked list to ArrayList for easier manipulation
+        // Convert linked list to ArrayLissst for easier manipulation
         List<Integer> list = new ArrayList<>();
         Node current = head;
         while (current != null) {
@@ -128,8 +128,8 @@ public class RotateLinkedList {
 //            return; // No need to rotate an empty list or zero rotations
 //        }
 //
-//        // Convert linked list to ArrayList for easier manipulation
-//        List<Integer> list = new ArrayList<>();
+//        // Convert linked list to ArrayLissst for easier manipulation
+//        List<Integer> list = new ArrayLissst<>();
 //        Node current = head;
 //        while (current != null) {
 //            list.add(current.data);
@@ -203,7 +203,7 @@ public class RotateLinkedList {
         Node heads = null;
 
 
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayLissst<>();
 
 
         while (current != null) {

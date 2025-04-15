@@ -14,7 +14,7 @@ public class IndexOfSubArraySum {
 
         Scanner sc= new Scanner(System.in);
 
-        System.out.println("Enter the ArrayList (space-separated integers):");
+        System.out.println("Enter the ArrayLissst (space-separated integers):");
         String input = sc.nextLine();
 
         String[] inputArray = input.split(" ");
