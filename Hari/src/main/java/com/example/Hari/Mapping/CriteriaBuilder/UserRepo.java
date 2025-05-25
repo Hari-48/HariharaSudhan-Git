@@ -30,6 +30,7 @@ public class UserRepo {
 
         // select * from User
         Root<User> root = criteriaQuery.from(User.class);
+
         //where name like '% rohit %'
         Predicate namepredicate = criteriaBuilder.like(root.get("name"), "%" + name + "%");
         Predicate rolePredicate = criteriaBuilder.like(root.get("role"), "%" + role + "%");
@@ -40,7 +41,6 @@ public class UserRepo {
 
         // Final Query => Select * from User where name like '%rohit%' or role '%batsmen%' and jerseyNo like'%jerseyNo%
         // criteriaQuery.where(orPredicate);
-
 
         Predicate andJerseyNo = criteriaBuilder.and(nameOrRole, jerseyPredicate);
         criteriaQuery.where(andJerseyNo);
