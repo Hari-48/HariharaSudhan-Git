@@ -9,19 +9,19 @@ public class SecondLargestNumber {
 
 
     public static void main(String[] args) {
-        int[] arr = {12, 35, 1, 10, 34, 1};
-        System.out.println(secondLargestNumber(arr));
+        int[] arr = {4, 6, 0, 8, 0, 7};
+//        System.out.println(secondLargestNumber(arr));
+        moveZeroToLast(arr);
     }
 
     private static int secondLargestNumber(int[] arr) {
         int firstLargestNumber = Integer.MIN_VALUE;
         int secondLargestNumber = Integer.MIN_VALUE;
-        for(int num : arr){
-            if(num>firstLargestNumber){
+        for (int num : arr) {
+            if (num > firstLargestNumber) {
                 secondLargestNumber = firstLargestNumber;
                 firstLargestNumber = num;
-            }
-             else if (num > secondLargestNumber && num != firstLargestNumber) {
+            } else if (num > secondLargestNumber && num != firstLargestNumber) {
                 secondLargestNumber = num;
             }
         }
@@ -29,10 +29,9 @@ public class SecondLargestNumber {
     }
 
 
-
     public static int secondLargestNumber() {
 
-        Scanner sc= new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ArrayLissst (space-separated integers) and continues number:");
         String input = sc.nextLine();
 
@@ -43,20 +42,41 @@ public class SecondLargestNumber {
         }
 
 
-
         int firstLargestNumber = Integer.MIN_VALUE;
         int secondLargestNumber = Integer.MIN_VALUE;
-        for(int num : arr){
-            if(num>firstLargestNumber){
+        for (int num : arr) {
+            if (num > firstLargestNumber) {
                 secondLargestNumber = firstLargestNumber;
                 firstLargestNumber = num;
-            }
-            else if (num > secondLargestNumber && num != firstLargestNumber) {
+            } else if (num > secondLargestNumber && num != firstLargestNumber) {
                 secondLargestNumber = num;
             }
         }
         return secondLargestNumber;
     }
+
+
+    public static void moveZeroToLast(int[] arr) {
+
+        int ind = 0 ;
+
+        for (int i = 0; i < arr.length ; i++) {
+            if (arr[i] != 0) {
+                arr[ind++] = arr[i];
+            }
+        }
+
+        while(ind<arr.length) {
+            arr[ind++] = 0;
+        }
+
+
+
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+}
 
 
 //    private static int secondLargestNumber(int[] arr) {
@@ -81,4 +101,3 @@ public class SecondLargestNumber {
 //    }
 
 
-}
